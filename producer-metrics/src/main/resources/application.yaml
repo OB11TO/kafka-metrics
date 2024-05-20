@@ -1,3 +1,16 @@
 spring:
   application:
     name: metrics-producer
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:29092
+          configuration:
+            key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      bindings:
+        metricsTopic:
+          destination: metrics-topic
+          contentType: application/json
+          group: ${spring.application.name}

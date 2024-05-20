@@ -9,5 +9,4 @@ public class ProducerMetricsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProducerMetricsApplication.class, args);
 	}
-
 }
