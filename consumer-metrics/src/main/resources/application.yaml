@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: metrics-consumer
+    name: consumer-metrics
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: ob11to

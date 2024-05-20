@@ -1,6 +1,6 @@
 spring:
   application:
-    name: metrics-producer
+    name: producer-metrics
   cloud:
     stream:
       kafka:

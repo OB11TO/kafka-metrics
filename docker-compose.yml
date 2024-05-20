@@ -1,6 +1,4 @@
 version: '3.9'
-volumes:
-  kafka_gorch:
 
 services:
   zookeeper:
@@ -45,3 +43,47 @@ services:
       - KAFKA_CLUSTERS_0_NAME=kafka
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
+
+  postgres:
+    container_name: postgres_container
+    image: postgres:14.8-alpine3.18
+    environment:
+      POSTGRES_DB: "system_performance_metrics"
+      POSTGRES_USER: "migration_user"
+      POSTGRES_PASSWORD: "mgr_user"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - postgres-network
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4:7.2
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@ob11to.ru"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+    networks:
+      - postgres-network
+
+volumes:
+  pg-data:
+  pgadmin-data:
+  kafka_gorch:
+
+networks:
+  postgres-network:
+    driver: bridge

@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/system_performance_metrics
+    username: migration_user
+    password: mgr_user
+    driver-class-name: org.postgresql.Driver
