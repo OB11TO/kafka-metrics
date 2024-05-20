@@ -9,7 +9,6 @@ version = '0.0.1-SNAPSHOT'
 
 ext {
     set('springCloudVersion', "2020.0.6")
-
     springdoc = "1.6.6"
 }
 
