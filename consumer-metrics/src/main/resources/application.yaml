@@ -5,7 +5,7 @@ spring:
   application:
     name: metrics-consumer
   datasource:
-    url: jdbc:postgresql://localhost:5432/time_tracking_systems
+    url: jdbc:postgresql://localhost:5432/postgres
     username: ob11to
     password: ob11to
     driver-class-name: org.postgresql.Driver

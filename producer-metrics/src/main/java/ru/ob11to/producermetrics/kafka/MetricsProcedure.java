@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
-import ru.ob11to.producermetrics.dto.SystemPerformanceMetric;
+import ru.ob11to.producermetrics.dto.SystemPerformanceMetricDto;
 
 import java.util.UUID;
 
@@ -14,8 +14,8 @@ public class MetricsProcedure {
 
     private final MetricsProducerChannel producer;
 
-    public void send(SystemPerformanceMetric payload) {
-        Message<SystemPerformanceMetric> message = MessageBuilder
+    public void send(SystemPerformanceMetricDto payload) {
+        Message<SystemPerformanceMetricDto> message = MessageBuilder
                 .withPayload(payload)
                 .setHeaderIfAbsent("UUID", UUID.randomUUID())
                 .build();

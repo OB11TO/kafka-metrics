@@ -24,6 +24,13 @@ repositories {
 ext {
 	set('springCloudVersion', "2020.0.6")
 	springdoc = "1.6.6"
+	mapstructVersion = "1.4.2.Final"
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
 }
 
 dependencyManagement {
@@ -48,11 +55,15 @@ dependencies {
 	//OpenApi
 	implementation "org.springdoc:springdoc-openapi-ui:${springdoc}"
 
+	//MapStruct
+	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+
 	compileOnly 'org.projectlombok:lombok'
 
 	runtimeOnly 'org.postgresql:postgresql'
 
 	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.cloud:spring-cloud-stream-test-binder'

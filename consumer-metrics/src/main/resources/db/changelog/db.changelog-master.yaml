@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: adagridjan:create-tables-system_performance_metrics
+      author: adagridjan
+
+  - include:
+      file: db.changelog-1.0.sql
+      relativeToChangelogFile: true
